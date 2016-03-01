@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+- '4.2.2'
+env:
+  global:
+  # ========== Heroku Pipelines for Travis =========
+  # -------------------- Deploy --------------------
+  - HP4T_DEPLOY_FROM_REPOSITORY=$DEPLOY_FROM_REPOSITORY
+  - HP4T_DEPLOY_FROM_BRANCH=$DEPLOY_FROM_BRANCH
+  # ----------------- Heroku apps ------------------
+  - HP4T_HEROKU_APPNAME_STAGE=$HEROKU_APPNAME_STAGE
+  - HP4T_HEROKU_APPNAME_PRODUCTION=$HEROKU_APPNAME_PRODUCTION
+cache:
+  directories:
+  - node_modules
+before_install:
+- scripts/hp4t/init.sh
+- scripts/hp4t/update-nodejs.sh
+install:
+- npm install
+before_script:
+- npm test
+- scripts/hp4t/heroku/provision.sh stage
+- scripts/hp4t/heroku/deploy.sh
+- scripts/hp4t/heroku/migrate-database.sh $HEROKU_APPNAME_STAGE
+- scripts/hp4t/heroku/provision.sh production
+- scripts/hp4t/heroku/promote.sh
+- scripts/hp4t/heroku/migrate-database.sh $HEROKU_APPNAME_PRODUCTION
+script:
+- /bin/true
+after_success:
+- scripts/hp4t/notifications/rollbar.sh
+- scripts/hp4t/notifications/slack.sh

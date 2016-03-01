@@ -1,0 +1,13 @@
+{
+    "name": "wojtekk/herokupipelines4travis",
+    "authors": [
+        {
+            "name": "Wojciech Krawczyk",
+            "email": "wojciech.krawczyk@schibsted.pl"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "post-package-install": "echo asfdasfasf"
+    }
+}
