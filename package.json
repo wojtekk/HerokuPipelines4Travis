@@ -1,12 +1,12 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "",
   "scripts": {},
   "bin": {
     "hp4t/init": "./src/heroku/init.sh",
-    "hp4t/update-nodejs": "./src/heroku/update-nodejs.sh",
+    "hp4t/update-nodejs": "./src/update-nodejs.sh",
     "hp4t/provision": "./src/heroku/provision.sh",
     "hp4t/deploy": "./src/heroku/deploy.sh",
     "hp4t/migrate-database": "./src/heroku/migrate-database.sh",
