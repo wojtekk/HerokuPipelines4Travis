@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -ev
+set -e
 
 # Allow deploy only from specified repository and branch but not from pull requests
 if [ "$TRAVIS_REPO_SLUG" != "$HP4T_DEPLOY_FROM_REPOSITORY" ] || \
