@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-. ./variables.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+. $DIR/variables.sh
 
 if [ ! -d $HP4T_PROJECT_SCRIPTS_DIR ]; then
   mkdir -p $HP4T_PROJECT_SCRIPTS_DIR
