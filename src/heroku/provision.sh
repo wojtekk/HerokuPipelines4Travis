@@ -10,10 +10,12 @@ then
   exit 0;
 fi
 
+export HP4T_EXTENSION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../herokupipelines4travis/" && pwd )"
+
 # Provision the app
 if [ "$TRAVIS_NODE_PATH" ];
 then
-  $TRAVIS_NODE_PATH ./infrastructure/$1.js
+  $TRAVIS_NODE_PATH $HP4T_EXTENSION_DIR/src/heroku/provision.js $PWD/infrastructure/$1.js
 else
-  node ./infrastructure/$1.js
+  node $HP4T_EXTENSION_DIR/src/heroku/provision.js $PWD/infrastructure/$1.js
 fi
