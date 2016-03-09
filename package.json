@@ -1,6 +1,6 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "",
   "main": "",
   "scripts": {},
@@ -9,7 +9,6 @@
     "hp4t/update-nodejs": "./src/update-nodejs.sh",
     "hp4t/provision": "./src/heroku/provision.sh",
     "hp4t/deploy": "./src/heroku/deploy.sh",
-    "hp4t/migrate-database": "./src/heroku/migrate-database.sh",
     "hp4t/promote": "./src/heroku/promote.sh",
     "hp4t/notify-rollbar": "./src/notifications/rollbar.sh"
   },

@@ -30,6 +30,3 @@ heroku plugins:install heroku-pipelines
 echo "Setup Heroku git"
 netrc_content="machine git.heroku.com\n  login git\n  password $HEROKU_API_KEY"
 echo -e $netrc_content >> ~/.netrc
-
-# Add Heroku remote - stage app
-heroku git:remote -a $HP4T_HEROKU_APPNAME_STAGE

@@ -11,4 +11,4 @@ then
 fi
 
 # Promote stage to production
-heroku pipelines:promote --app $HP4T_HEROKU_APPNAME_STAGE;
+heroku pipelines:promote --app $1;

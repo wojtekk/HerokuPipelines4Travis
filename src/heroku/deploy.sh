@@ -10,5 +10,8 @@ then
   exit 0;
 fi
 
-# Deploy to stage
+# Add Heroku app as remote
+heroku git:remote -a $1
+
+# Deploy
 git push heroku $TRAVIS_BRANCH:master -f
