@@ -12,7 +12,7 @@ fi
 
 # ==================== Install Heroku Toolbelt ====================
 
-# Temporarly solution - Schibsted Travis CI don't allow install Toolbelt via .travis.yml:
+# You can install Heroku Toolbelt in .travis.yml
 # addons:
 #  apt:
 #    sources:
@@ -20,9 +20,13 @@ fi
 #    packages:
 #     - heroku-toolbelt
 
-echo "Install Heroku Toolbelt"
-wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-heroku plugins:install heroku-pipelines
+if command -v heroku 2>/dev/null; then
+  echo "Heroku Toolbelt Installed"
+else
+  echo "Install Heroku Toolbelt"
+  wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  heroku plugins:install heroku-pipelines
+fi;
 
 # ==================== Setup Heroku ====================
 
