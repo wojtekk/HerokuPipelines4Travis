@@ -1,7 +1,7 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.1.2",
-  "description": "",
+  "version": "0.1.3",
+  "description": "Heroku Pipelines for Travis",
   "main": "",
   "scripts": {},
   "bin": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.schibsted.io:bergens-tidende/HerokuPipelines4Travis.git"
+    "url": "https://github.com/wojtekk/HerokuPipelines4Travis.git"
   },
   "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.pl>",
   "license": "ISC",
