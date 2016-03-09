@@ -1,32 +1,35 @@
 language: node_js
 node_js:
-- '4.2.2'
+- 5.6
 env:
   global:
+  # ================= App settings =================
+  # your environment variables
   # ========== Heroku Pipelines for Travis =========
   # -------------------- Deploy --------------------
-  - HP4T_DEPLOY_FROM_REPOSITORY=$DEPLOY_FROM_REPOSITORY
-  - HP4T_DEPLOY_FROM_BRANCH=$DEPLOY_FROM_BRANCH
+  - HP4T_DEPLOY_FROM_REPOSITORY=repo/name
+  - HP4T_DEPLOY_FROM_BRANCH=master
   # ----------------- Heroku apps ------------------
-  - HP4T_HEROKU_APPNAME_STAGE=$HEROKU_APPNAME_STAGE
-  - HP4T_HEROKU_APPNAME_PRODUCTION=$HEROKU_APPNAME_PRODUCTION
+  - HP4T_HEROKU_APPNAME_STAGE=app-name-stage
+  - HP4T_HEROKU_APPNAME_PRODUCTION=CHANGE_ME_app-name-prod
+  # ------------ Additional sesstings --------------
+  # HP4T_ROLLBAR_DEPLOY_KEY
+  - secure: ""
+  # HEROKU_API_KEY
+  - secure: ""
 cache:
   directories:
   - node_modules
-before_install:
-- node_modules/.bin/hp4t/init.sh
 install:
 - npm install
 before_script:
 - npm test
+- node_modules/.bin/hp4t/init
 - node_modules/.bin/hp4t/provision stage
-- node_modules/.bin/hp4t/deploy
-- node_modules/.bin/hp4t/migrate-database $HEROKU_APPNAME_STAGE
+- node_modules/.bin/hp4t/deploy $HP4T_HEROKU_APPNAME_STAGE
 - node_modules/.bin/hp4t/provision production
-- node_modules/.bin/hp4t/promote
-- node_modules/.bin/hp4t/migrate-database $HEROKU_APPNAME_PRODUCTION
+- node_modules/.bin/hp4t/promote $HP4T_HEROKU_APPNAME_STAGE
 script:
 - /bin/true
 after_success:
-- scripts/hp4t/notifications/rollbar.sh
-- scripts/hp4t/notifications/slack.sh
+- node_modules/.bin/hp4t/notify-rollbar.sh
