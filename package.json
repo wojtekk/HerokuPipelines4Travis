@@ -1,12 +1,16 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "scripts/make-link.sh",
-    "postuninstall": "scripts/remove-link.sh"
+  "scripts": {},
+  "bin": {
+    "hp4t/init": "./src/heroku/init.sh",
+    "hp4t/update-nodejs": "./src/heorku/update-nodejs.sh",
+    "hp4t/provision": "./src/heroku/provision.sh",
+    "hp4t/deploy": "./src/heroku/deploy.sh",
+    "hp4t/migrate-database": "./src/heroku/migrate-database.sh",
+    "hp4t/promote": "./src/heroku/promote.sh"
   },
   "repository": {
     "type": "git",
@@ -14,7 +18,7 @@
   },
   "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.pl>",
   "license": "ISC",
-  "scripts": {
-    "install": "scripts/make-link.sh"
+  "dependencies": {
+    "heroin-js": "1.5.0"
   }
 }
