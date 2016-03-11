@@ -14,4 +14,4 @@ fi
 heroku git:remote -a $1
 
 # Deploy
-git push heroku $TRAVIS_BRANCH:master -f
+git push heroku $TRAVIS_BRANCH:master
