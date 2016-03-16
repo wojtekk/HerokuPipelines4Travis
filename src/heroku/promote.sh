@@ -10,5 +10,7 @@ then
   exit 0;
 fi
 
+app=$1
+
 # Promote stage to production
-heroku pipelines:promote --app $1;
+heroku pipelines:promote --app $app;
