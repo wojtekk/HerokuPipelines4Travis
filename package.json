@@ -1,17 +1,13 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.1.6",
+  "version": "0.2.7",
   "description": "Heroku Pipelines for Travis",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "prepublish": "npm version patch"
+  },
   "bin": {
-    "hp4t/init": "./src/heroku/init.sh",
-    "hp4t/update-nodejs": "./src/update-nodejs.sh",
-    "hp4t/provision": "./src/heroku/provision.sh",
-    "hp4t/deploy": "./src/heroku/deploy.sh",
-    "hp4t/promote": "./src/heroku/promote.sh",
-    "hp4t/notify-rollbar": "./src/notifications/rollbar.sh",
-    "hp4t/export": "./src/heroku/export.sh"
+    "hp4t": "./src/hp4t.sh"
   },
   "repository": {
     "type": "git",

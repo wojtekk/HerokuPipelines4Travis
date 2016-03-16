@@ -28,14 +28,17 @@ cache:
   - node_modules
 install:
 - npm install
+- alias hp4t="$(npm bin)/hp4t"
 before_script:
 - npm test
-- node_modules/.bin/hp4t/init
-- node_modules/.bin/hp4t/provision stage
-- node_modules/.bin/hp4t/deploy $HP4T_HEROKU_APPNAME_STAGE
-- node_modules/.bin/hp4t/provision production
-- node_modules/.bin/hp4t/promote $HP4T_HEROKU_APPNAME_STAGE
+- hp4t init
+- hp4t provision stage
+- hp4t deploy $HP4T_HEROKU_APPNAME_STAGE
+# - hp4t run $HP4T_HEROKU_APPNAME_STAGE "npm run migrate-database"
+- hp4t provision production
+- hp4t promote $HP4T_HEROKU_APPNAME_STAGE
+# - hp4t run $HP4T_HEROKU_APPNAME_PRODUCTION "npm run migrate-database"
 script:
 - /bin/true
 after_success:
-- node_modules/.bin/hp4t/notify-rollbar.sh
+- node_modules/.bin/hp4t/notify-rollbar
