@@ -38,4 +38,4 @@ before_script:
 script:
 - /bin/true
 after_success:
-- node_modules/.bin/hp4t/notify-rollbar.sh
+- node_modules/.bin/hp4t/notify-rollbar
