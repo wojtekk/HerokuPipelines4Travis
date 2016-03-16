@@ -6,4 +6,4 @@ HP4T_EXTENSION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../herokupipeline
 app=$1
 key=$2
 
-node $HP4T_EXTENSION_DIR/src/heroku/export.js $app $key
+node $HP4T_EXTENSION_DIR/src/export.js $app $key
