@@ -11,7 +11,8 @@
     "hp4t/deploy": "./src/heroku/deploy.sh",
     "hp4t/promote": "./src/heroku/promote.sh",
     "hp4t/notify-rollbar": "./src/notifications/rollbar.sh",
-    "hp4t/export": "./src/heroku/export.sh"
+    "hp4t/export": "./src/heroku/export.sh",
+    "hp4t/run": "./src/heroku/run.sh"
   },
   "repository": {
     "type": "git",
