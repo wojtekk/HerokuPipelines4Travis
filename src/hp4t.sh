@@ -29,7 +29,7 @@ then
   exit 0;
 fi
 
-COMMAND_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../herokupipelines4travis/src/" && pwd )"
+COMMAND_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../herokupipelines4travis/src/" && pwd )"
 
 command="$COMMAND_DIR/$commandName.sh"
 params="${@:2}"
