@@ -3,7 +3,9 @@
   "version": "0.2.3",
   "description": "Heroku Pipelines for Travis",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "prepublish": "npm version patch"
+  },
   "bin": {
     "hp4t": "./src/hp4t.sh"
   },
