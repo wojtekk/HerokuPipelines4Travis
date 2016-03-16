@@ -32,6 +32,6 @@ fi
 COMMAND_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../herokupipelines4travis/src/" && pwd )"
 
 command="$COMMAND_DIR/$commandName.sh"
-params="${@:2}"
+params="$(printf " %q" "${@:2}")"
 
-$command $params
+bash -c "$command $params"
