@@ -1,25 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
-# Safe commands don't affect production or stage environment
-safeCommands=( "export" "update-nodejs" "setup");
+# Read variables, helper functions and configurations
 
-array_contains() {
-    local array="$1[@]"
-    local seeking=$2
-    local in=1
-    for element in "${!array}"; do
-        if [[ $element == $seeking ]]; then
-            in=0
-            break
-        fi
-    done
-    return $in
-}
+export COMMANDS_DIR="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
+. $COMMANDS_DIR/_variables.sh
+. $COMMANDS_DIR/_helpers.sh
+. $COMMANDS_DIR/_configuration.sh
+
+# Check if command is allowed only on Travis. Safe commands can be run anywhere
+
 commandName=$1
 commandIsSafe=$( array_contains safeCommands "$commandName" && echo 1 || echo 0 )
 
 # Allow deploy only from specified repository and branch but not from pull requests
+
 if [[ "$commandIsSafe" != 1  &&  \
   ( "$TRAVIS_REPO_SLUG" != "$HP4T_DEPLOY_FROM_REPOSITORY"  || \
    "$TRAVIS_BRANCH" != "$HP4T_DEPLOY_FROM_BRANCH"  || \
@@ -29,9 +24,9 @@ then
   exit 0;
 fi
 
-COMMAND_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../herokupipelines4travis/src/" && pwd )"
+# Run command and pass all params
 
-command="$COMMAND_DIR/$commandName.sh"
+command="$COMMANDS_DIR/$commandName.sh"
 params="$(printf " %q" "${@:2}")"
 
 bash -c "$command $params"

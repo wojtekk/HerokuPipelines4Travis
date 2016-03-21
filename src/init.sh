@@ -22,6 +22,7 @@ fi;
 # ==================== Setup Heroku ====================
 
 # Heroku git credentials
+
 echo "Setup Heroku git"
 netrc_content="machine git.heroku.com\n  login git\n  password $HEROKU_API_KEY"
 echo -e $netrc_content >> ~/.netrc
