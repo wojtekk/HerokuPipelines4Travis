@@ -2,7 +2,7 @@
 set -e
 
 # Safe commands don't affect production or stage environment
-safeCommands=( "export" "update-nodejs" );
+safeCommands=( "export" "update-nodejs" "setup");
 
 array_contains() {
     local array="$1[@]"
