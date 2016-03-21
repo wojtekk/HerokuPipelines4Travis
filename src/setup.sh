@@ -12,7 +12,7 @@ fi
 
 echo "[HP4T] Infrastructure configration: initialising"
 if [ -d $HP4T_PROJECT_DIR/infrastructure ]; then
-  echo "[HP4T] Infrastructure configration: exists, moving directory `infrastructure` to `infrastructure.pre_hp4t`."
+  echo "[HP4T] Infrastructure configration: exists, moving directory infrastructure to infrastructure.pre_hp4t"
   mv $HP4T_PROJECT_DIR/infrastructure $HP4T_PROJECT_DIR/infrastructure.pre_hp4t
 fi
 cp -r $HP4T_TEMPLATES_DIR/infrastructure/$projectType $HP4T_PROJECT_DIR/infrastructure
@@ -21,9 +21,10 @@ cp -r $HP4T_TEMPLATES_DIR/infrastructure/$projectType $HP4T_PROJECT_DIR/infrastr
 
 echo "[HP4T] Travis configuration: initialising"
 if [ -f $HP4T_PROJECT_DIR/.travis.yml ]; then
-  echo "[HP4T] Travis configuration: exists, moving file `.travis.yml` to  `.travis.yml.pre_hp4t`"
+  echo "[HP4T] Travis configuration: exists, moving file .travis.yml to  .travis.yml.pre_hp4t"
   mv $HP4T_PROJECT_DIR/.travis.yml $HP4T_PROJECT_DIR/.travis.yml.pre_hp4t
 fi
+travis init --skip-version-check
 cp $HP4T_TEMPLATES_DIR/travis/$projectType/.travis.yml $HP4T_PROJECT_DIR/.travis.yml
 
 # Read and update project configuration
@@ -72,7 +73,8 @@ sed -i "s|__HP4T_HEROKU_APPNAME_STAGE__|$IN_HEROKU_APPNAME_PRODUCTION|" $HP4T_PR
 
 read -r -p "Rollbar Depploy Key: " IN_ROLLBAR_DEPLOY_KEY;
 if [ -z "$IN_ROLLBAR_DEPLOY_KEY" ]; then
-  sed -i "s|__HP4T_ROLLBAR_DEPLOY_KEY__|$IN_ROLLBAR_DEPLOY_KEY|" $HP4T_PROJECT_DIR/.travis.yml;
+  SECURED_ROLLBAR_DEPLOY_KEY="$(travis encrypt HP4T_ROLLBAR_DEPLOY_KEY=$IN_ROLLBAR_DEPLOY_KEY)"
+  sed -i "s|__HP4T_ROLLBAR_DEPLOY_KEY__|$SECURED_ROLLBAR_DEPLOY_KEY|" $HP4T_PROJECT_DIR/.travis.yml;
 fi;
 
 # Read HEROKU_API_KEY
@@ -84,4 +86,5 @@ while read -r -p "Heroku API Key: " IN_HEROKU_API_KEY; do
     echo -e "\e[91mHeroku API key can not be empty.\e[39m";
   fi;
 done;
-sed -i "s|__HEROKU_API_KEY__|$IN_HEROKU_API_KEY|" $HP4T_PROJECT_DIR/.travis.yml;
+SECURED_HEROKU_API_KEY="$(travis encrypt HEROKU_API_KEY=$IN_HEROKU_API_KEY)"
+sed -i "s|__HEROKU_API_KEY__|$SECURED_HEROKU_API_KEY|" $HP4T_PROJECT_DIR/.travis.yml;
