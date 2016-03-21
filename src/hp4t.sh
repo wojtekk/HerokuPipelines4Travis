@@ -3,7 +3,7 @@ set -e
 
 # Read variables, helper functions and configurations
 
-export COMMANDS_DIR="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
+export COMMANDS_DIR="$(dirname $(readlink -f "${BASH_SOURCE[0]}"))"
 . $COMMANDS_DIR/_variables.sh
 . $COMMANDS_DIR/_helpers.sh
 . $COMMANDS_DIR/_configuration.sh

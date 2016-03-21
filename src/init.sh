@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# ================= Install CoreUtils===================
-
-if ! [ command -v heroku 2>/dev/null ]; then
-  echo "Install CoreUtils"
-  apt-get install coreutils
-fi;
-
 # ==================== Install Heroku Toolbelt ====================
 
 # You can install Heroku Toolbelt in .travis.yml
