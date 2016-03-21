@@ -20,9 +20,9 @@ env:
   - HP4T_HEROKU_APPNAME_PRODUCTION=__HP4T_HEROKU_APPNAME_PRODUCTION__
   # ------------ Additional sesstings --------------
   # HP4T_ROLLBAR_DEPLOY_KEY
-  - secure: "__HP4T_ROLLBAR_DEPLOY_KEY__"
+  - secure: __HP4T_ROLLBAR_DEPLOY_KEY__
   # HEROKU_API_KEY
-  - secure: "__HEROKU_API_KEY__"
+  - secure: __HEROKU_API_KEY__
 cache:
   directories:
   - node_modules
