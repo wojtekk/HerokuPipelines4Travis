@@ -13,16 +13,16 @@ env:
   # your environment variables
   # ========== Heroku Pipelines for Travis =========
   # -------------------- Deploy --------------------
-  - HP4T_DEPLOY_FROM_REPOSITORY=repo/name
-  - HP4T_DEPLOY_FROM_BRANCH=master
+  - HP4T_DEPLOY_FROM_REPOSITORY=__HP4T_DEPLOY_FROM_REPOSITORY__
+  - HP4T_DEPLOY_FROM_BRANCH=__HP4T_DEPLOY_FROM_BRANCH__
   # ----------------- Heroku apps ------------------
-  - HP4T_HEROKU_APPNAME_STAGE=app-name-stage
-  - HP4T_HEROKU_APPNAME_PRODUCTION=CHANGE_ME_app-name-prod
+  - HP4T_HEROKU_APPNAME_STAGE=__HP4T_HEROKU_APPNAME_STAGE__
+  - HP4T_HEROKU_APPNAME_PRODUCTION=__HP4T_HEROKU_APPNAME_PRODUCTION__
   # ------------ Additional sesstings --------------
   # HP4T_ROLLBAR_DEPLOY_KEY
-  - secure: ""
+  - secure: "__HP4T_ROLLBAR_DEPLOY_KEY__"
   # HEROKU_API_KEY
-  - secure: ""
+  - secure: "__HEROKU_API_KEY__"
 cache:
   directories:
   - node_modules
