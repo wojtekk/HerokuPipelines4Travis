@@ -1,6 +1,4 @@
 vendor/
 node_modules/
-infrastructure/
-scripts/hp4t/
 tmp/
 !tmp/.gitkepp
