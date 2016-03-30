@@ -7,7 +7,7 @@ Create application and configure pipeline on [Heroku](https://devcenter.heroku.c
 To initiate project follow commands:
 
     npm install herokupipelines4travis --save
-    $(npm bin)/hp4t setup
+    $(npm bin)/hp4t setup nodejs
 
 You can edit files:
 
