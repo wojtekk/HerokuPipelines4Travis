@@ -25,7 +25,7 @@ For simplify usage you should define:
 
 ## Important commands
 
-* `hp4t setup` - initialise project
+* `hp4t setup nodejs` - initialise project
 * `hp4t export app_name [heroku_api_key]` - export existing Heroku application configration
 
 ## Commands used on Travis CI
