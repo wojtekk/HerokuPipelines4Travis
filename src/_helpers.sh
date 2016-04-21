@@ -2,7 +2,7 @@
 
 # Helpers munctions
 
-array_contains() {
+function array_contains() {
     local array="$1[@]"
     local seeking=$2
     local in=1
@@ -18,3 +18,6 @@ array_contains() {
 fcomp() {
     awk -v n1=$1 -v n2=$2 'BEGIN{ if (n1<n2) exit 0; exit 1}'
 }
+
+export -f array_contains
+export -f fcomp
