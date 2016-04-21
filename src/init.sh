@@ -25,7 +25,7 @@ node_version=$(node --version | tr -d [:alpha:] | cut -c1-3)
 
 if fcomp "$node_version" "$HP4T_NODEJS_MIN_VERSION";
 then
-  nvm install stable;
+  ~/.nvm/nvm.sh install stable;
 fi;
 
 # ==================== Install HeroinJS ====================
