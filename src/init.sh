@@ -21,7 +21,12 @@ echo -e $netrc_content >> ~/.netrc
 
 # ==================== Update NodeJS ====================
 
-[ $(echo "$(node --version | tr -d [:alpha:] | cut -c1-3)>4.2" | bc) -eq 1 ] || nvm install stable
+node_version=$(node --version | tr -d [:alpha:] | cut -c1-3)
+
+if fcomp "$node_version" "$HP4T_NODEJS_MIN_VERSION";
+then
+  nvm install stable;
+fi;
 
 # ==================== Install HeroinJS ====================
 
