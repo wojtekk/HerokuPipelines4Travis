@@ -25,7 +25,8 @@ node_version=$(node --version | tr -d [:alpha:] | cut -c1-3)
 
 if fcomp "$node_version" "$HP4T_NODEJS_MIN_VERSION";
 then
-  ~/.nvm/nvm.sh install stable;
+  echo "Too old NodeJS - install NodeJS v4.2 or newer (use: 'nvm install stable' in .travis.yml)";
+  exit 100;
 fi;
 
 # ==================== Install HeroinJS ====================
