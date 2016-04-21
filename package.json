@@ -1,6 +1,6 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "Heroku Pipelines for Travis",
   "main": "",
   "scripts": {
