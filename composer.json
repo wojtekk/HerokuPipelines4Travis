@@ -8,6 +8,5 @@
     ],
     "require": {},
     "scripts": {
-        "post-package-install": "echo asfdasfasf"
     }
 }
