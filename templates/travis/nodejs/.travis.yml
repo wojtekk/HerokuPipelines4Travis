@@ -1,12 +1,12 @@
 language: node_js
 node_js:
 - 5.6
-# addons:
-#  apt:
-#    sources:
-#     - heroku
-#    packages:
-#     - heroku-toolbelt
+addons:
+  apt:
+    sources:
+     - heroku
+    packages:
+     - heroku-toolbelt
 env:
   global:
   # ================= App settings =================
@@ -24,6 +24,7 @@ env:
   # HEROKU_API_KEY
   - secure: __HEROKU_API_KEY__
 cache:
+  apt: true
   directories:
   - node_modules
 install:
