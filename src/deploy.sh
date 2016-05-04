@@ -4,7 +4,7 @@ app=$1
 
 # Add Heroku app as remote
 
-heroku git:remote --app $app
+git remote add heroku git@git.heroku.com:$app.git
 
 # Deploy
 
