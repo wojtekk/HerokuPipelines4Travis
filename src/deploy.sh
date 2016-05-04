@@ -4,7 +4,7 @@ app=$1
 
 # Add Heroku app as remote
 
-git remote add heroku https://git:$HEROKU_API_KEY@git.heroku.com/$app.git -f
+git remote add heroku ssh://git@git.heroku.com:$app.git
 
 # Deploy
 
