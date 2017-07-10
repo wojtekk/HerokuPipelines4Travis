@@ -13,8 +13,6 @@ const argv = parseArgs(process.argv.slice(2), {
   },
 });
 
-console.log(argv);
-
 if (!argv._[0]) {
   return error('You must specify an archive file.');
 }
