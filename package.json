@@ -18,7 +18,7 @@
   "dependencies": {
     "colors": "1.1.2",
     "heroin-js": "^1.18.0",
-    "heroku-deploy-tarball": "https://github.com/wojtekk/heroku-deploy-tarball.git#v1.0.1",
+    "heroku-deploy-tarball": "git+https://github.com/wojtekk/heroku-deploy-tarball.git#v1.0.1",
     "minimist": "1.2.0",
     "npm-bundle": "3.0.3",
     "tar-rename": "1.0.4"
