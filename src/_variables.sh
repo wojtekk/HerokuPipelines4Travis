@@ -2,7 +2,7 @@
 set -e
 
 # Safe commands don't affect production or stage environment
-safeCommands=( "export" "update-nodejs" "setup" "install-heroin-js" "package-npm");
+safeCommands=( "export" "update-nodejs" "setup" "install-heroin-js" "package");
 
 # A few important directories
 

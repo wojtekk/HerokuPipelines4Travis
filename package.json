@@ -3,21 +3,18 @@
   "version": "0.3.11",
   "description": "Heroku Pipelines for Travis",
   "main": "",
-  "scripts": {
-    "prepublish": "npm version patch"
-  },
   "bin": {
     "hp4t": "./src/hp4t.sh"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wojtekk/HerokuPipelines4Travis.git#v1.0.1"
+    "url": "https://github.com/wojtekk/HerokuPipelines4Travis.git"
   },
   "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.pl>",
   "license": "ISC",
   "dependencies": {
     "colors": "1.1.2",
-    "heroin-js": "^1.18.0",
+    "heroin-js": "1.18.0",
     "heroku-deploy-tarball": "git+https://github.com/wojtekk/heroku-deploy-tarball.git#v1.0.1",
     "minimist": "1.2.0",
     "npm-bundle": "3.0.3",
