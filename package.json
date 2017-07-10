@@ -16,6 +16,11 @@
   "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.pl>",
   "license": "ISC",
   "dependencies": {
-    "heroin-js": "1.5.0"
+    "colors": "1.1.2",
+    "heroin-js": "1.18.0",
+    "heroku-deploy-tarball": "1.0.0",
+    "minimist": "1.2.0",
+    "npm-bundle": "3.0.3",
+    "tar-rename": "1.0.4"
   }
 }
