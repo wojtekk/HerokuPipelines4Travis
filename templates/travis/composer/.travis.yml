@@ -1,33 +1,40 @@
+---
 language: php
-php: 7.0
+php: stable
 env:
   global:
-  - HEROKU_API_KEY
-  - HP4T_ROLLBAR_DEPLOY_KEY
-  # ==================== Deploy ====================
-  - HP4T_DEPLOY_FROM_REPOSITORY=bergens-tidende/perks-royal
+  # ================= App settings =================
+  # your environment variables
+  # ========== Heroku Pipelines for Travis =========
+  # -------------------- Deploy --------------------
+  - HP4T_DEPLOY_FROM_REPOSITORY=repo/name
   - HP4T_DEPLOY_FROM_BRANCH=master
-  # ==================== Heroku app ====================
-  - HP4T_HEROKU_APPNAME_STAGE=perks-api-stage
-  - HP4T_HEROKU_APPNAME_PRODUCTION=perks-api
+  # ----------------- Heroku apps ------------------
+  - HP4T_HEROKU_APPNAME_STAGE=app-name-stage
+  - HP4T_HEROKU_APPNAME_PRODUCTION=CHANGE_ME_app-name-prod
+  # ------------ Additional sesstings --------------
+  # HP4T_ROLLBAR_DEPLOY_KEY
+  - secure: ""
+  # HEROKU_API_KEY
+  - secure: ""
 cache:
   directories:
   - vendor
 before_install:
-- scripts/pipelines4travis/init.sh
-- scripts/pipelines4travis/update-nodejs.sh
+- nvm stable
+- alias hp4t="$(npm bin)/hp4t"
 install:
 - composer install
 before_script:
 - composer test
-- scripts/hp4t/heroku/provision.sh stage
-- scripts/hp4t/heroku/deploy.sh
-- scripts/hp4t/heroku/migrate-database.sh $HEROKU_APPNAME_STAGE
-- scripts/hp4t/heroku/provision.sh production
-- scripts/hp4t/heroku/promote.sh
-- scripts/hp4t/heroku/migrate-database.sh $HEROKU_APPNAME_PRODUCTION
+- hp4t init
+- hp4t provision stage
+- hp4t deploy $HP4T_HEROKU_APPNAME_STAGE
+# - hp4t run $HP4T_HEROKU_APPNAME_STAGE "composer migrate-database"
+- hp4t provision production
+- hp4t promote $HP4T_HEROKU_APPNAME_STAGE
+# - hp4t run $HP4T_HEROKU_APPNAME_PRODUCTION "composer migrate-database"
 script:
 - /bin/true
 after_success:
-- scripts/hp4t/notifications/rollbar.sh
-- scripts/hp4t/notifications/slack.sh
+- hp4t notify-rollbar
