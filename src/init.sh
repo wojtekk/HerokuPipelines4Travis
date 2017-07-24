@@ -3,20 +3,10 @@ set -e
 
 # ==================== Install Heroku Toolbelt ====================
 
-# You can install Heroku Toolbelt in .travis.yml
-# addons:
-#  apt:
-#    sources:
-#     - heroku
-#    packages:
-#     - heroku-toolbelt
-
 if command -v heroku 2>/dev/null; then
   echo "Heroku Toolbelt Installed"
 else
-  echo "Install Heroku Toolbelt"
-  wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  heroku plugins:install heroku-pipelines
+  npm install heroku-cli -g
 fi;
 
 # ==================== Setup Heroku ====================
