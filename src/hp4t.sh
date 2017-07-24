@@ -6,7 +6,6 @@ set -e
 export COMMANDS_DIR="$(dirname $(readlink -f "${BASH_SOURCE[0]}"))"
 . $COMMANDS_DIR/_variables.sh
 . $COMMANDS_DIR/_helpers.sh
-. $COMMANDS_DIR/_configuration.sh
 
 # Check if command is allowed only on Travis. Safe commands can be run anywhere
 

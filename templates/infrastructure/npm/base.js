@@ -1,37 +1,30 @@
-var configuration = {
+const configuration = {
   region: 'eu',
   maintenance: false,
-  stack: 'cedar-14',
+  stack: 'heroku-16',
   config_vars: {},
-  addons: {
-    logentries: {
-      plan: 'logentries:le_tryit'
-    },
-    librato: {
-      plan: 'librato:development'
-    }
-  },
+  addons: {},
   collaborators: [],
   features: {
     'runtime-dyno-metadata': {
-      enabled: false
+      enabled: false,
     },
     'log-runtime-metrics': {
-      enabled: false
+      enabled: true,
     },
     'http-session-affinity': {
-      enabled: false
+      enabled: false,
     },
     preboot: {
-      enabled: false
+      enabled: false,
     },
     'http-shard-header': {
-      enabled: false
+      enabled: false,
     },
     'http-end-to-end-continue': {
-      enabled: false
-    }
-  }
+      enabled: false,
+    },
+  },
 };
 
 module.exports = configuration;

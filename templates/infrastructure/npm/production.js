@@ -1,22 +1,22 @@
-var _ = require('lodash');
+const _ = require('lodash');
 
-var baseConfig = require('./base');
+const baseConfig = require('./base');
 
-var production = {
+const production = {
   name: process.env.HP4T_HEROKU_APPNAME_PRODUCTION,
   addons: {},
   config_vars: {},
-  domains: [ process.env.HP4T_HEROKU_APPNAME_PRODUCTION+'.herokuapp.com'],
+  domains: [`${process.env.HP4T_HEROKU_APPNAME_PRODUCTION}.herokuapp.com`],
   collaborators: [],
   formation: [
     {
       process: 'web',
       quantity: 1,
-      size: 'Free'
-    }
-  ]
+      size: 'Free',
+    },
+  ],
 };
 
-var configuration = _.merge({}, baseConfig, production);
+const configuration = _.merge({}, baseConfig, production);
 
 module.exports = configuration;

@@ -14,15 +14,15 @@ const argv = parseArgs(process.argv.slice(2), {
 });
 
 if (!argv._[0]) {
-  return error('You must specify an archive file.');
+  error('You must specify an archive file.');
 }
 
 if (!argv._[1]) {
-  return error('You must specify an app name.');
+  error('You must specify an app name.');
 }
 
 if (!argv['api-key']) {
-  return error('You must specify an API Key.');
+  error('You must specify an API Key.');
 }
 
 const config = {

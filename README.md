@@ -6,8 +6,12 @@ Create application and configure pipeline on [Heroku](https://devcenter.heroku.c
 
 To initiate project follow commands:
 
-    npm install herokupipelines4travis --save
-    $(npm bin)/hp4t setup nodejs
+```bash
+npm install herokupipelines4travis lodash --save-dev
+$(npm bin)/hp4t setup nodejs
+```
+
+_Package _lodash_ is optional - install it if you want to use it in `infrastructure/`._
 
 You can edit files:
 
@@ -21,7 +25,9 @@ You can edit files:
 
 For simplify usage you should define:
 
-    alias hp4t="$(npm bin)/hp4t"
+```bash
+alias hp4t="$(npm bin)/hp4t"
+```
 
 ## Important commands
 
