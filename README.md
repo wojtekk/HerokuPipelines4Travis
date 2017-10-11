@@ -38,7 +38,7 @@ alias hp4t="$(npm bin)/hp4t"
 
 * `hp4t init` - initialise runtime environment
 * `hp4t provision environment_name` - provision Heroku app
-* `hp4t pipeline` - set Heroku pipeline
+* `hp4t pipeline` - setup Heroku pipeline
 * `hp4t deploy app_name` - deploy code to Heroku app
 * `hp4t run app_name "command with params"` - run command on Heroku application (useful for database migration)
 * `hp4t promote app_name` - promote existing application to next environment
@@ -91,6 +91,7 @@ after_success:
 deploy:
   hp4t init
   hp4t package build.tgz
+  hp4t pipeline
   hp4t provision stage
   hp4t deploy-tarball build.tgz ${HP4T_HEROKU_APPNAME_STAGE}
   hp4t run ${HP4T_HEROKU_APPNAME_STAGE} "npm run migrate-database"
