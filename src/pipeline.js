@@ -11,5 +11,7 @@ const configuration = require(configFile);
 
 const configurator = heroin(process.env.HEROKU_API_KEY, { debug: false });
 configurator.pipeline(configuration).then((result) => {
-  console.log(result);
+  if (result) {
+    console.log(result);
+  }
 });
