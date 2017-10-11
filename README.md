@@ -50,3 +50,53 @@ alias hp4t="$(npm bin)/hp4t"
 * [Heroku Pipelines](https://devcenter.heroku.com/articles/pipelines)
 * [Travis CI](https://travis-ci.org/)
 * [Heroin-JS](https://www.npmjs.com/package/heroin-js)
+
+
+## Example Travis configuration file
+
+`.travis.yml`
+
+```yaml
+---
+language: node_js
+node_js: stable
+env:
+  global:
+  # ========== Heroku Pipelines for Travis =========
+  # HEROKU_API_KEY
+  - secure: "..."
+  - HP4T_HEROKU_APPNAME_STAGE=hp4t-test-stage
+  - HP4T_HEROKU_APPNAME_PRODUCTION=hp4t-test
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
+script:
+- npm test
+- npm lint
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: make deploy
+    on:
+      branch: master
+after_success:
+- hp4t notify-rollbar
+```
+
+`Makefile`
+
+```makefile
+deploy:
+  hp4t init
+  hp4t package build.tgz
+  hp4t provision stage
+  hp4t deploy-tarball build.tgz ${HP4T_HEROKU_APPNAME_STAGE}
+  hp4t run ${HP4T_HEROKU_APPNAME_STAGE} "npm run migrate-database"
+  hp4t provision production
+  hp4t promote ${HP4T_HEROKU_APPNAME_STAGE}
+  hp4t run ${HP4T_HEROKU_APPNAME_PRODUCTION} "npm run migrate-database"
+```
+
+_Please remember to use one tab indent in `Makefile`._
