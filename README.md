@@ -43,7 +43,7 @@ alias hp4t="$(npm bin)/hp4t"
 * `hp4t run app_name "command with params"` - run command on Heroku application (useful for database migration)
 * `hp4t promote app_name` - promote existing application to next environment
 * `hp4t package output-file.tgz` - build a tarball (tgz) with dependencies for Npm based projects
-* `hp4t deploy-tarball app_name file.tgz` - deploy tarball file to a Heorku aplication
+* `hp4t deploy-tarball app_name file.tgz` - deploy tarball file to a Heroku aplication
 
 ## Read more
 
