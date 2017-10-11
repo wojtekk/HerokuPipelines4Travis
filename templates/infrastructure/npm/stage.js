@@ -7,7 +7,7 @@ const stage = {
   addons: {},
   config_vars: {},
   domains: [
-    process.env.HP4T_HEROKU_APPNAME_STAGE,
+    `${process.env.HP4T_HEROKU_APPNAME_STAGE}.herokuapp.com`,
   ],
   formation: [
     {

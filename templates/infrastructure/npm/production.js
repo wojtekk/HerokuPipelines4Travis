@@ -7,7 +7,7 @@ const production = {
   addons: {},
   config_vars: {},
   domains: [
-    process.env.HP4T_HEROKU_APPNAME_PRODUCTION,
+    `${process.env.HP4T_HEROKU_APPNAME_PRODUCTION}.herokuapp.com`,
   ],
   formation: [
     {
