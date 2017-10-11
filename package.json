@@ -1,6 +1,6 @@
 {
   "name": "herokupipelines4travis",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Heroku Pipelines for Travis",
   "main": "src/hp4t.sh",
   "bin": {
