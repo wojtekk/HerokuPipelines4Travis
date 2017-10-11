@@ -7,6 +7,7 @@ if (!process.argv[2]) {
 const appName = process.argv[2];
 let herokuApiKey;
 if (process.argv[3]) {
+  // eslint-disable-next-line prefer-destructuring
   herokuApiKey = process.argv[3];
 } else if (process.env.HEROKU_API_KEY) {
   herokuApiKey = process.env.HEROKU_API_KEY;
