@@ -1,29 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-# Read variables, helper functions and configurations
+# A few important directories
 
+export HP4T_PROJECT_DIR=$PWD
+export HP4T_EXTENSION_DIR="$(cd $(dirname $(readlink -f "${BASH_SOURCE[0]}"))/.. && pwd)"
+export HP4T_TEMPLATES_DIR="$HP4T_EXTENSION_DIR/templates"
 export COMMANDS_DIR="$(dirname $(readlink -f "${BASH_SOURCE[0]}"))"
-. $COMMANDS_DIR/_variables.sh
-. $COMMANDS_DIR/_helpers.sh
-
-# Check if command is allowed only on Travis. Safe commands can be run anywhere
-
-commandName=$1
-commandIsSafe=$( array_contains safeCommands "$commandName" && echo 1 || echo 0 )
-
-# Allow deploy only from specified repository and branch but not from pull requests
-
-if [[ "$commandIsSafe" != 1  &&  \
-  ( "$TRAVIS_REPO_SLUG" != "$HP4T_DEPLOY_FROM_REPOSITORY"  || \
-   "$TRAVIS_BRANCH" != "$HP4T_DEPLOY_FROM_BRANCH"  || \
-   "$TRAVIS_PULL_REQUEST" != false ) ]]
-then
-  echo "-- Skipped"
-  exit 0;
-fi
 
 # Run command and pass all params
+
+commandName=$1
 
 command="$COMMANDS_DIR/$commandName.sh"
 params="$(printf " %q" "${@:2}")"

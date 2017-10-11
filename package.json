@@ -1,8 +1,8 @@
 {
   "name": "herokupipelines4travis",
-  "version": "0.5.1",
+  "version": "3.0.0",
   "description": "Heroku Pipelines for Travis",
-  "main": "src/run.sh",
+  "main": "src/hp4t.sh",
   "bin": {
     "hp4t": "./src/hp4t.sh"
   },
@@ -16,19 +16,19 @@
     "precommit": "npm run lint",
     "prepublishOnly": "pkg-ok"
   },
-  "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.pl>",
+  "author": "Wojciech Krawczyk <wojciech.krawczyk@schibsted.com>",
   "license": "ISC",
   "dependencies": {
     "bundle-deps": "1.0.0",
     "colors": "1.1.2",
-    "heroin-js": "1.18.0",
+    "heroin-js": "1.19.2",
     "heroku-tarball-deploy": "1.0.0",
     "minimist": "1.2.0",
     "tar-rename": "1.0.4"
   },
   "devDependencies": {
-    "eslint": "4.3.0",
-    "eslint-config-airbnb-base": "11.3.0",
+    "eslint": "4.8.0",
+    "eslint-config-airbnb-base": "12.0.2",
     "eslint-plugin-import": "2.7.0",
     "husky": "0.14.3",
     "pkg-ok": "1.1.0"

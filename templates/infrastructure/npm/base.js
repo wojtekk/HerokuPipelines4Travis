@@ -5,9 +5,12 @@ const configuration = {
   config_vars: {},
   addons: {},
   collaborators: [],
+  buildpacks: [
+    'heroku/nodejs',
+  ],
   features: {
     'runtime-dyno-metadata': {
-      enabled: false,
+      enabled: true,
     },
     'log-runtime-metrics': {
       enabled: true,
@@ -15,13 +18,13 @@ const configuration = {
     'http-session-affinity': {
       enabled: false,
     },
-    preboot: {
-      enabled: false,
-    },
     'http-shard-header': {
       enabled: false,
     },
     'http-end-to-end-continue': {
+      enabled: false,
+    },
+    preboot: {
       enabled: false,
     },
   },

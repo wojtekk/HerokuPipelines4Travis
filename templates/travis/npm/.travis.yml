@@ -3,36 +3,24 @@ language: node_js
 node_js: stable
 env:
   global:
-  # ================= App settings =================
-  # your environment variables
   # ========== Heroku Pipelines for Travis =========
-  # -------------------- Deploy --------------------
-  - HP4T_DEPLOY_FROM_REPOSITORY=repo/name
-  - HP4T_DEPLOY_FROM_BRANCH=master
-  # ----------------- Heroku apps ------------------
-  - HP4T_HEROKU_APPNAME_STAGE=app-name-stage
-  - HP4T_HEROKU_APPNAME_PRODUCTION=CHANGE_ME_app-name-prod
-  # ------------ Additional sesstings --------------
-  # HP4T_ROLLBAR_DEPLOY_KEY
-  - secure: ""
   # HEROKU_API_KEY
-  - secure: ""
+  - secure: "i87uX5NjLaR/hzJxAK0UncpAgWRfril1FR6qEyaxg0XuLgB7pe4fPrlafTHKqbhHPLxUyqngCNp2W0l8vBPbbfSyO6CJgI6jd8nMCljIrFLJFd11oPAA6ML6zeNhhnQUWQcKvrGzeM8ghdUlvAXEOfjEvj+sIlhFGZI3pyE8Il7RZsCmzUuIDhAA5paZS34qLlYifru9ozrvKxYXw2EEb3ZEXR5eLIhFHNooqzN+JjQkQ6WOWtacV70pW1pXqgRo0wr3N2MbATqhINW7mTk3h3AKMkfeLgEu0MXGulFfQHFVsLD7b8IENe28pYv+0pz3AmOSQZaOJqnwkD/XAZxmv4yq11ImJxz6YG3u0fqumxsMvpmBlxefyYcBq4fTSNmbSxpF6Y1J8fR6/07TGBOwRpFcleQ12MUn8ACT0TMg8W8wZwu/JF0TKzbqUKTOzVaNz6/X/C3l+ZGuz6+/BvWkiIrtgbf7mqUUt7nbQehzCYSmPQjqv6vgCmS8eVbYzz1/gWo1Xw8UQjleXVrnssaki8o9lfW2sIUYaoz2OGNaJrZTTG55qF1zmmsh27lRcOX5XEv/oGJKVFM4Hc6YIkurlEQXXSq9y1XUvVicq1BWcZgXxYEFpEX3oEZJCFroZikBFwMHPobPkF8yx2DB1zIIBk3PSCWLVQy79ncJIML8WLA="
+  - HP4T_HEROKU_APPNAME_STAGE=hp4t-test-stage
+  - HP4T_HEROKU_APPNAME_PRODUCTION=hp4t-test
 cache:
   directories:
   - node_modules
 install:
 - npm install
-- alias hp4t="$(npm bin)/hp4t"
-before_script:
-- npm test
-- hp4t init
-- hp4t provision stage
-- hp4t deploy $HP4T_HEROKU_APPNAME_STAGE
-# - hp4t run $HP4T_HEROKU_APPNAME_STAGE "npm run migrate-database"
-- hp4t provision production
-- hp4t promote $HP4T_HEROKU_APPNAME_STAGE
-# - hp4t run $HP4T_HEROKU_APPNAME_PRODUCTION "npm run migrate-database"
 script:
-- /bin/true
+- npm test
+#- npm lint
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: make deploy
+    on:
+      branch: master
 after_success:
 - hp4t notify-rollbar

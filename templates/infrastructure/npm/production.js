@@ -1,13 +1,14 @@
 const _ = require('lodash');
 
-const baseConfig = require('./base');
+const base = require('./base');
 
 const production = {
   name: process.env.HP4T_HEROKU_APPNAME_PRODUCTION,
   addons: {},
   config_vars: {},
-  domains: [`${process.env.HP4T_HEROKU_APPNAME_PRODUCTION}.herokuapp.com`],
-  collaborators: [],
+  domains: [
+    process.env.HP4T_HEROKU_APPNAME_PRODUCTION,
+  ],
   formation: [
     {
       process: 'web',
@@ -15,8 +16,14 @@ const production = {
       size: 'Free',
     },
   ],
+  // You can enable preboot for professional dynos only
+  // features: {
+  //   preboot: {
+  //     enabled: true,
+  //   },
+  // },
 };
 
-const configuration = _.merge({}, baseConfig, production);
+const configuration = _.merge({}, base, production);
 
 module.exports = configuration;

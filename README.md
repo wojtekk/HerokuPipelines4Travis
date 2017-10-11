@@ -8,7 +8,7 @@ To initiate project follow commands:
 
 ```bash
 npm install herokupipelines4travis lodash --save-dev
-$(npm bin)/hp4t setup nodejs
+$(npm bin)/hp4t setup
 ```
 
 _Package _lodash_ is optional - install it if you want to use it in `infrastructure/`._
@@ -29,15 +29,16 @@ For simplify usage you should define:
 alias hp4t="$(npm bin)/hp4t"
 ```
 
-## Important commands
+## Setup commands
 
-* `hp4t setup nodejs` - initialise project
+* `hp4t setup` - initialise project
 * `hp4t export app_name [heroku_api_key]` - export existing Heroku application configration
 
-## Commands used on Travis CI
+## Commands for Travis CI
 
 * `hp4t init` - initialise runtime environment
 * `hp4t provision environment_name` - provision Heroku app
+* `hp4t pipeline` - set Heroku pipeline
 * `hp4t deploy app_name` - deploy code to Heroku app
 * `hp4t run app_name "command with params"` - run command on Heroku application (useful for database migration)
 * `hp4t promote app_name` - promote existing application to next environment

@@ -1,12 +1,14 @@
 const _ = require('lodash');
 
-const baseConfig = require('./base');
+const base = require('./base');
 
 const stage = {
   name: process.env.HP4T_HEROKU_APPNAME_STAGE,
   addons: {},
   config_vars: {},
-  domains: [`${process.env.HP4T_HEROKU_APPNAME_STAGE}.herokuapp.com`],
+  domains: [
+    process.env.HP4T_HEROKU_APPNAME_STAGE,
+  ],
   formation: [
     {
       process: 'web',
@@ -16,6 +18,6 @@ const stage = {
   ],
 };
 
-const configuration = _.merge({}, baseConfig, stage);
+const configuration = _.merge({}, base, stage);
 
 module.exports = configuration;

@@ -1,4 +1,0 @@
-language: php
-php: 7.0
-script:
-- tests/test.sh
