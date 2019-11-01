@@ -21,7 +21,7 @@
   "dependencies": {
     "bundle-deps": "1.0.0",
     "colors": "1.1.2",
-    "heroin-js": "1.19.2",
+    "heroin-js": "^1.22.1",
     "heroku-tarball-deploy": "1.0.4",
     "minimist": "1.2.0",
     "tar-rename": "1.0.4"
